@@ -13,7 +13,15 @@ public class RouletteService {
     @Autowired
     private RouletteDao rDao;
 
+    public String maxRoulseq() {
+        return rDao.maxRoulSeqValue();
+    }
+
     public int saveRoulette(RouletteDTO dto) {
         return rDao.onSave(dto);
+    }
+
+    public List<RouletteDTO> rouletteResultService() {
+        return rDao.rouletteResultMapper();
     }
 }

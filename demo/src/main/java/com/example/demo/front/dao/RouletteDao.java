@@ -7,5 +7,10 @@ import com.example.demo.front.dto.RouletteDTO;
 
 @Mapper
 public interface RouletteDao {
+
+    public String maxRoulSeqValue();
+
     public int onSave(RouletteDTO dto);
+
+    public List<RouletteDTO> rouletteResultMapper();
 }

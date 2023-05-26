@@ -10,7 +10,15 @@ public class FrontServiceController {
     @Autowired
     private RouletteService service;
 
+    public String roulMaxSeq() {
+        return service.maxRoulseq();
+    }
+
     public int onSave(RouletteDTO dto) {
         return service.saveRoulette(dto);
+    }
+
+    public List<RouletteDTO> rouletteResult() {
+        return service.rouletteResultService();
     }
 }

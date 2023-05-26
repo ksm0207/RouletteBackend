@@ -6,13 +6,45 @@
 <!-- Mapper -->
 <mapper  namespace="com.example.demo.front.dao.RouletteDao">
 
+<select id="rouletteResultMapper" resultType="hashmap">
+
+SELECT name,
+       item_list,
+       item_result,
+       DATE_FORMAT(START_DATE, '%Y-%m-%d %H:%i') AS start_date
+FROM roulette
+ORDER BY START_DATE DESC
+
+</select>
+
+<select id="maxRoulSeqValue" resultType="String">
+
+SELECT MAX(roul_seq) + 1 AS maxRoulSeq
+FROM roulette
+ORDER BY START_DATE DESC;
+
+</select>
+
+
+<select id="rouletteResultMapper" resultType="hashmap">
+
+SELECT name,
+       item_list,
+       item_result,
+       DATE_FORMAT(START_DATE, '%Y-%m-%d %H:%i') AS start_date
+FROM roulette
+ORDER BY START_DATE DESC
+
+</select>
+
 <insert id="onSave" parameterType="com.example.demo.front.dto.RouletteDTO">
-INSERT INTO roulette (item_list ,item_result,start_date)
+INSERT INTO roulette (item_list ,item_result,start_date,name)
 VALUES
 (
   #{item_list},
   #{item_result},
-  SYSDATE()
+  SYSDATE(),
+  #{name}
 )
 </insert>
 
