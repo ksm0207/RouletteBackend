@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper -->
+<mapper  namespace="com.example.demo.front.dao.GuestBookDao">
+    <insert id="submitGuestBook" parameterType="com.example.demo.front.dto.GuestBookDTO">
+        insert into guestbook (message,passwd,SecretYn,insert_date)
+        values
+        (
+            #{message},
+            #{passwd},
+            #{SecretYn},
+            NOW()
+        )
+    </insert>
+
+    <select id="getGuestBookAllList" resultType="hashmap">
+        SELECT message,
+               like_count,
+               insert_date
+        FROM guestbook
+    </select>
+</mapper>

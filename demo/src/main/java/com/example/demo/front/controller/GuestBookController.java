@@ -1,18 +1,27 @@
 package com.example.demo.front.controller;
 
 import com.example.demo.front.basic.FrontServiceController;
+import com.example.demo.front.dto.GuestBookDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/guestBook")
 public class GuestBookController extends FrontServiceController {
 
     @PostMapping("/submit")
-    public ResponseEntity<Object> guestBookSubmit(){
+    public ResponseEntity<Object> guestBookSubmit(@RequestBody GuestBookDTO dto){
+        int result = super.submitGuestBook(dto);
+        System.out.println("Insert Result : " + result);
+        return new ResponseEntity<Object>(result,null, HttpStatus.OK);
+    }
 
-        return null;
+    @PostMapping("/getGuestBookAllList")
+    public ResponseEntity<Object> guestBookAllList(){
+        List<GuestBookDTO> selectList = super.getGuestBookAllList();
+        return new ResponseEntity<Object>(selectList,HttpStatus.OK);
     }
 }
