@@ -19,21 +19,19 @@ public class RouletteController extends FrontServiceController {
     public ResponseEntity<Object> saveOnRouletteData(@RequestBody RouletteDTO dto) {
 
         StringBuilder sb = new StringBuilder();
+        String maxSeqValue = super.roulMaxSeq();
+        String defaultAnonymousUser = "익명사용자1";
 
-        String anonymous = null;
-        String maxValue = super.roulMaxSeq();
-        String anonymousUser = null;
-
-        if (maxValue != null) {
-            anonymous = "익명사용자";
-            sb.append(anonymous);
-            sb.append(maxValue);
-            anonymousUser = sb.toString();
-            dto.setName(anonymousUser);
+        if (maxSeqValue == null) {
+            dto.setName(defaultAnonymousUser);
+        }else {
+            defaultAnonymousUser = "익명사용자";
+            sb.append(defaultAnonymousUser);
+            sb.append(maxSeqValue);
+            dto.setName(sb.toString());
         }
         int result = super.onSave(dto);
         return new ResponseEntity<Object>(result, null, HttpStatus.OK);
-
     }
 
     @PostMapping("/front/roulette/result")

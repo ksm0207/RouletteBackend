@@ -21,19 +21,6 @@ ORDER BY START_DATE DESC
 
 SELECT MAX(roul_seq) + 1 AS maxRoulSeq
 FROM roulette
-ORDER BY START_DATE DESC;
-
-</select>
-
-
-<select id="rouletteResultMapper" resultType="hashmap">
-
-SELECT name,
-       item_list,
-       item_result,
-       DATE_FORMAT(START_DATE, '%Y-%m-%d %H:%i') AS start_date
-FROM roulette
-ORDER BY START_DATE DESC
 
 </select>
 
