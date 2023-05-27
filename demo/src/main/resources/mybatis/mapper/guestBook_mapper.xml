@@ -17,7 +17,8 @@
     </insert>
 
     <select id="getGuestBookAllList" resultType="hashmap">
-        SELECT message,
+        SELECT guest_seq,
+               message,
                like_count,
                insert_date
         FROM guestbook
