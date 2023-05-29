@@ -24,4 +24,10 @@ public class GuestBookController extends FrontServiceController {
         List<GuestBookDTO> selectList = super.getGuestBookAllList();
         return new ResponseEntity<Object>(selectList,HttpStatus.OK);
     }
+
+    @PostMapping("/secretGuestBook")
+    public ResponseEntity<Object> secretGuestBook(@RequestBody GuestBookDTO dto){
+        GuestBookDTO secretData = super.getSecretGuestBook(dto.getGuest_seq() , dto.getPasswd());
+        return new ResponseEntity<Object>(secretData,HttpStatus.OK);
+    }
 }

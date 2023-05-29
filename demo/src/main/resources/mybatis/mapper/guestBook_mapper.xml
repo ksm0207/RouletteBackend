@@ -20,7 +20,17 @@
         SELECT guest_seq,
                message,
                like_count,
+               SecretYn as secretYn,
+               deleteYn,
                insert_date
         FROM guestbook
+    </select>
+
+    <select id="getSecretGuestBook" resultType="com.example.demo.front.dto.GuestBookDTO">
+        SELECT *
+            FROM guestbook g
+        WHERE 1=1
+        and guest_seq = #{guest_seq}
+        and passwd = #{passwd}
     </select>
 </mapper>

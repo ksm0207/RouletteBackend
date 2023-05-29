@@ -8,6 +8,7 @@ import java.util.List;
 @Mapper
 public interface GuestBookDao {
     public int submitGuestBook(GuestBookDTO dto);
-
     public List<GuestBookDTO> getGuestBookAllList();
+
+    public GuestBookDTO getSecretGuestBook(String guest_seq , String passwd);
 }

@@ -16,9 +16,12 @@ public class GuestBookService {
 
     public int submitGuestBook(GuestBookDTO dto) {
         return guestDao.submitGuestBook(dto);
-
     }
     public List<GuestBookDTO> getGuestBookAllList() {
         return guestDao.getGuestBookAllList();
+    }
+
+    public GuestBookDTO getSecretGuestBook(String guest_seq , String passwd) {
+        return guestDao.getSecretGuestBook(guest_seq,passwd);
     }
 }

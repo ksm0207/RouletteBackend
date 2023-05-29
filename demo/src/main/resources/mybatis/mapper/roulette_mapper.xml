@@ -8,12 +8,14 @@
 
 <select id="rouletteResultMapper" resultType="hashmap">
 
-SELECT name,
-       item_list,
-       item_result,
-       DATE_FORMAT(START_DATE, '%Y-%m-%d %H:%i') AS start_date
-FROM roulette
-ORDER BY START_DATE DESC
+    SELECT roul_seq ,
+           name,
+            item_list,
+            item_result,
+            start_date
+    FROM roulette
+    ORDER BY start_date desc
+
 
 </select>
 

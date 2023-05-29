@@ -35,4 +35,8 @@ public class FrontServiceController {
         return guestBookService.getGuestBookAllList();
     }
 
+    public GuestBookDTO getSecretGuestBook(String guest_seq , String passwd) {
+        return guestBookService.getSecretGuestBook(guest_seq,passwd);
+    }
+
 }
